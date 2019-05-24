@@ -5,10 +5,10 @@ import { Component } from '@angular/core';
   template: /*html*/ `
     <ul class="todo-list">
       <app-todo-item></app-todo-item>
+      <app-todo-item></app-todo-item>
+      <app-todo-item></app-todo-item>
+      <app-todo-item></app-todo-item>
     </ul>
-  `,
-  styles: [ /*css*/ `
-
-  `]
+  `
 })
 export class TodoListComponent {}

@@ -4,9 +4,8 @@ import { Component } from '@angular/core';
   selector: 'app-root',
   template: /*html*/`
     <section class="todoapp">
-      <app-todo-add></app-todo-add>
-
       <main class="main">
+        <app-todo-add></app-todo-add>
         <app-todo-status-bar></app-todo-status-bar>
         <app-todo-list></app-todo-list>
       </main>
