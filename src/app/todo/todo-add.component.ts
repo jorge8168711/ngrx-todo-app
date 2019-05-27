@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
-import { AddTodoAction, AppState, ToggleAllTodosAction } from '../store';
+import { AppState } from '../store/app.reducers';
+import * as fromActions from '../store/actions';
 
 @Component({
   selector: 'app-todo-add',
@@ -43,7 +44,7 @@ export class TodoAddComponent implements OnInit {
 
   addTodo() {
     if (!this.textInput.invalid) {
-      this.store.dispatch(new AddTodoAction(this.textInput.value));
+      this.store.dispatch(new fromActions.AddTodoAction(this.textInput.value));
       this.textInput.setValue('');
       this.toggleTodosValue = false;
     }
@@ -51,6 +52,6 @@ export class TodoAddComponent implements OnInit {
 
   public toggleAll() {
     this.toggleTodosValue = !this.toggleTodosValue;
-    this.store.dispatch(new ToggleAllTodosAction(this.toggleTodosValue));
+    this.store.dispatch(new fromActions.ToggleAllTodosAction(this.toggleTodosValue));
   }
 }

@@ -1,5 +1,5 @@
-import * as fromTodoActions from './todo.actions';
-import { Todo } from '../todo/todo.model';
+import { Todo } from '../../todo/todo.model';
+import * as fromTodoActions from '../actions';
 
 const initialState: Todo[] = [
   new Todo('Todo de prueba antes de crear número 1'),

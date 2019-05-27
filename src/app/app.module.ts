@@ -11,7 +11,7 @@ import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from 'src/environments/environment';
 import { ReactiveFormsModule } from '@angular/forms';
-import { todoReducer } from './store';
+import { todoReducer } from './store/reducers';
 
 @NgModule({
   declarations: [

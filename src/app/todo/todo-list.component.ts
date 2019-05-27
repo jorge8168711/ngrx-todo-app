@@ -1,8 +1,8 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { AppState } from '../store';
 import { SubSink } from 'subsink';
 import { Todo } from './todo.model';
+import { AppState } from '../store/app.reducers';
 
 @Component({
   selector: 'app-todo-list',
