@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
-import { AddTodoAction, AppState } from '../store';
+import { AddTodoAction, AppState, ToggleAllTodosAction } from '../store';
 
 @Component({
   selector: 'app-todo-add',
@@ -10,7 +10,17 @@ import { AddTodoAction, AppState } from '../store';
       <h1 class="todo-add__label">Todos</h1>
 
       <div class="todo-add__field">
-        <button class="button todo-add__toggle"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path class="fill" d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/><path fill="none" d="M0 0h24v24H0V0z"/></svg></button>
+        <label class="todo-add__toggle" for="toggle"
+          [ngClass]="{ 'selected': toggleTodosValue }">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path class="fill" d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/><path fill="none" d="M0 0h24v24H0V0z"/></svg>
+        </label>
+
+        <input class="todo-add__checkbox"
+          type="checkbox"
+          id="toggle"
+          [checked]="toggleTodosValue"
+          (change)="toggleAll()">
+
         <input class="todo-add__input"
           autocomplete="off"
           type="text"
@@ -22,7 +32,8 @@ import { AddTodoAction, AppState } from '../store';
   `
 })
 export class TodoAddComponent implements OnInit {
-  textInput: FormControl;
+  public textInput: FormControl;
+  public toggleTodosValue = false;
 
   constructor(public store: Store<AppState>) {}
 
@@ -34,6 +45,12 @@ export class TodoAddComponent implements OnInit {
     if (!this.textInput.invalid) {
       this.store.dispatch(new AddTodoAction(this.textInput.value));
       this.textInput.setValue('');
+      this.toggleTodosValue = false;
     }
+  }
+
+  public toggleAll() {
+    this.toggleTodosValue = !this.toggleTodosValue;
+    this.store.dispatch(new ToggleAllTodosAction(this.toggleTodosValue));
   }
 }

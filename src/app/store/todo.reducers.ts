@@ -8,7 +8,7 @@ const initialState: Todo[] = [
 
 export function todoReducer(
   state: Todo[] = initialState,
-  action: fromTodoActions.Actions ) {
+  action: fromTodoActions.Actions ): Todo[] {
 
   switch (action.type) {
     case fromTodoActions.ADD_TODO:
@@ -31,6 +31,14 @@ export function todoReducer(
 
     case fromTodoActions.DELETE_TODO:
       return state.filter((el: Todo) => el.id !== action.payload);
+
+    case fromTodoActions.TOGGLE_ALL_TODOS:
+      return state.map((el: Todo) => {
+        return {
+          ...el,
+          completed: action.payload
+        };
+      });
 
     default:
       return state;
