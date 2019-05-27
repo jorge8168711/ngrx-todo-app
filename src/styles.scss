@@ -2,12 +2,18 @@
 /*# sourceMappingURL=normalize.min.css.map */
 
 :root {
-  --primary: #15d5ee;
-  --bg-primary: #f9fafb;
+  --primary: #0091EA;
+  --bg-primary: #F5F5F5;
   --text-primary: #9296a0;
   --text-secondary: #d1d4d8;
   --checkmark-border: #B5B6C1;
   --border-primary: #EAEAEA;
+}
+
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
 }
 
 body {
@@ -43,6 +49,7 @@ body {
     position: relative;
     border-radius: 5px;
     padding-left: 60px;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)
   }
 
   &__toggle {
@@ -95,7 +102,7 @@ body {
 
   &__status {
     font-size: 11px;
-    font-weight: 300;
+    font-weight: 500;
     margin: 0 0 0 auto;
   }
 
@@ -124,6 +131,7 @@ body {
 
 .todo-list {
   background-color: #FFF;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
   border-radius: 5px;
   padding: 0;
   margin: 0;
@@ -142,25 +150,29 @@ body {
     transform: scale(1);
   }
 
-  &__checkbox {
-    display: none;
-  }
-
   &__label,
   &__input {
     flex: 1;
   }
 
-  &__input {
-    display: none;
-  }
-
-  &__checkmark {
-    border: 2px solid var(--checkmark-border);
-    height: 14px;
-    width: 14px;
+  &__checkbox {
+    -webkit-appearance: none;
+    appearance: none;
+    border: 1px solid var(--checkmark-border);
     border-radius: 50%;
     margin-right: 15px;
+    height: 16px;
+    width: 16px;
+    transition: all .1s cubic-bezier(0.4, 0.0, 0.2, 1);
+  }
+
+  &__checkbox:checked {
+    border-color: var(--primary);
+    background: var(--primary) url(assets/checkmark.svg) center/12px no-repeat;
+  }
+
+  &__checkbox:focus {
+    outline: none;
   }
 
   &__label {
