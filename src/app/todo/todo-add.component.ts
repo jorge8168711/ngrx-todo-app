@@ -3,8 +3,8 @@ import { FormControl, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { AppState } from '../store/app.reducers';
 import * as fromActions from '../store/actions';
-import { SubSink } from 'subsink';
 import { Todo } from './todo.model';
+import { SubSink } from 'subsink';
 
 @Component({
   selector: 'app-todo-add',
@@ -27,7 +27,7 @@ import { Todo } from './todo.model';
         <input class="todo-add__input"
           autocomplete="off"
           type="text"
-          placeholder="Add new todo"
+          placeholder="add a new task"
           [formControl]="textInput"
           (keyup.enter)="addTodo()">
       </div>
