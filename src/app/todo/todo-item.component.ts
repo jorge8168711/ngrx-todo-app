@@ -1,8 +1,9 @@
 import { Component, Input, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { Todo } from './todo.model';
 import { FormControl, Validators } from '@angular/forms';
-import { AppState, ToggleTodoAction, EditTodoAction, DeleteTodoAction } from '../store';
 import { Store } from '@ngrx/store';
+import { AppState } from '../store/app.reducers';
+import * as fromTodoActions from '../store/actions';
 
 @Component({
   selector: 'app-todo-item',
@@ -59,15 +60,15 @@ export class TodoItemComponent implements OnInit {
     this.isEditingMode = false;
 
     if (this.textInput.valid && this.textInput.value !== this.todo.text) {
-      this.store.dispatch( new EditTodoAction({ id: this.todo.id, text: this.textInput.value }));
+      this.store.dispatch( new fromTodoActions.EditTodoAction({ id: this.todo.id, text: this.textInput.value }));
     }
   }
 
   public toggle() {
-    this.store.dispatch(new ToggleTodoAction(this.todo.id));
+    this.store.dispatch(new fromTodoActions.ToggleTodoAction(this.todo.id));
   }
 
   public delete() {
-    this.store.dispatch(new DeleteTodoAction(this.todo.id));
+    this.store.dispatch(new fromTodoActions.DeleteTodoAction(this.todo.id));
   }
-}
+  }

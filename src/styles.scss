@@ -121,17 +121,23 @@ body {
     background-color: transparent;
     color: var(--text-primary);
     font-size: 10px;
-    font-weight: 500;
+    font-weight: 400;
     letter-spacing: .08em;
     text-transform: uppercase;
     padding: 8px 5px;
     margin-right: 10px;
+    border-bottom: 2px solid transparent;
+    opacity: .75;
+  }
+
+  &__button:not(.active):hover {
+    opacity: 1;
   }
 
   &__button.active {
     color: var(--primary);
     font-weight: bold;
-    border-bottom: 2px solid var(--primary);
+    border-color: var(--primary);
   }
 }
 

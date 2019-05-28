@@ -1,5 +1,5 @@
-import * as fromTodoActions from './todo.actions';
-import { Todo } from '../todo/todo.model';
+import { Todo } from '../../todo/todo.model';
+import * as fromTodoActions from '../actions';
 
 const initialState: Todo[] = [
   new Todo('Todo de prueba antes de crear número 1'),
@@ -8,7 +8,7 @@ const initialState: Todo[] = [
 
 export function todoReducer(
   state: Todo[] = initialState,
-  action: fromTodoActions.Actions ): Todo[] {
+  action: fromTodoActions.TodoActions ): Todo[] {
 
   switch (action.type) {
     case fromTodoActions.ADD_TODO:
