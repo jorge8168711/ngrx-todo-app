@@ -5,6 +5,7 @@ export const TOGGLE_TODO = '[TODO] Toggle todo';
 export const TOGGLE_ALL_TODOS = '[TODO] Toggle ALL todos';
 export const EDIT_TODO = '[TODO] Edit todo';
 export const DELETE_TODO = '[TODO] Delete todo';
+export const CLEAR_COMPLETED_TOOS = '[TODO] Clear completed todos';
 
 export class AddTodoAction implements Action {
   readonly type = ADD_TODO;
@@ -31,8 +32,13 @@ export class DeleteTodoAction implements Action {
   constructor(public payload: number) { }
 }
 
+export class ClearCompletedTodosAction implements Action {
+  readonly type = CLEAR_COMPLETED_TOOS;
+}
+
 export type TodoActions = AddTodoAction
   | ToggleTodoAction
   | EditTodoAction
   | DeleteTodoAction
-  | ToggleAllTodosAction;
+  | ToggleAllTodosAction
+  | ClearCompletedTodosAction;

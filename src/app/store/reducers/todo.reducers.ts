@@ -2,8 +2,9 @@ import { Todo } from '../../todo/todo.model';
 import * as fromTodoActions from '../actions';
 
 const initialState: Todo[] = [
-  new Todo('Todo de prueba antes de crear número 1'),
-  new Todo('Todo de prueba antes de crear número 2')
+  new Todo('Example task number 1'),
+  new Todo('Example task number 2'),
+  new Todo('Example task number 3')
 ];
 
 export function todoReducer(
@@ -39,6 +40,9 @@ export function todoReducer(
           completed: action.payload
         };
       });
+
+    case fromTodoActions.CLEAR_COMPLETED_TOOS:
+      return state.filter((el: Todo) => !el.completed);
 
     default:
       return state;

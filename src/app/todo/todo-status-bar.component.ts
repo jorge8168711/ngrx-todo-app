@@ -17,8 +17,8 @@ import { SubSink } from 'subsink';
         {{ filter }}
       </button>
 
-      <p class="todo-status-bar__status">
-        <strong>{{ completedPercentage }} %</strong> completed
+      <p class="todo-status-bar__status" *ngIf="todosQty">
+        <strong>{{ completedPercentage }}%</strong> completed
       </p>
     </div>
   `
@@ -27,6 +27,7 @@ export class TodoStatusBarComponent implements OnInit, OnDestroy {
   public completedPercentage: number;
   public validFilters: ValidFilters[] = ['all', 'pending', 'completed'];
   public currentFilter: ValidFilters;
+  public todosQty: number;
   private subs = new SubSink();
 
   constructor(private store: Store<AppState>) {}
@@ -36,6 +37,7 @@ export class TodoStatusBarComponent implements OnInit, OnDestroy {
       this.store.subscribe((state: AppState) => {
         this.currentFilter = state.filters;
         this.completedPercentage = this.getCompletedPercentage(state.todos);
+        this.todosQty = state.todos.length;
       })
     );
   }
