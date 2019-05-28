@@ -31,7 +31,7 @@ export class DeleteTodoAction implements Action {
   constructor(public payload: number) { }
 }
 
-export type Actions = AddTodoAction
+export type TodoActions = AddTodoAction
   | ToggleTodoAction
   | EditTodoAction
   | DeleteTodoAction
