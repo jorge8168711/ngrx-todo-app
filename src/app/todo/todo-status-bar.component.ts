@@ -9,7 +9,7 @@ import { SubSink } from 'subsink';
 @Component({
   selector: 'app-todo-status-bar',
   template: /*html*/ `
-    <div class="todo-status-bar">
+    <div class="todo-status-bar" *ngIf="todosQty">
       <button class="todo-status-bar__button button"
         [ngClass]="{ 'active': currentFilter === filter }"
         (click)="setFilter(filter)"
@@ -17,7 +17,7 @@ import { SubSink } from 'subsink';
         {{ filter }}
       </button>
 
-      <p class="todo-status-bar__status" *ngIf="todosQty">
+      <p class="todo-status-bar__status">
         <strong>{{ completedPercentage }}%</strong> completed
       </p>
     </div>

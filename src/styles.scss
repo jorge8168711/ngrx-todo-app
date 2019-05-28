@@ -40,6 +40,8 @@ body {
 
 
 .todo-add {
+  margin-bottom: 40px;
+
   &__label {
     margin: 0 0 20px 0;
     font-size: 22px;
@@ -107,7 +109,6 @@ body {
 .todo-status-bar {
   display: flex;
   align-items: center;
-  margin-top: 40px;
 
   &__status {
     font-size: 11px;
