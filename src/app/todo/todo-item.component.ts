@@ -38,7 +38,7 @@ import * as fromTodoActions from '../store/actions';
 })
 export class TodoItemComponent implements OnInit {
   @Input() public todo: Todo;
-  @ViewChild('textInputRef') public textInputRef: ElementRef;
+  @ViewChild('textInputRef', { static: false }) public textInputRef: ElementRef;
 
   public isEditingMode = false;
   public textInput: FormControl;
