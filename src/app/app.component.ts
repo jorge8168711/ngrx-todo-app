@@ -16,5 +16,5 @@ import { Component } from '@angular/core';
   `]
 })
 export class AppComponent {
-  title = 'angular-ngrx-todo-app';
+  title = 'ngrx-todo-app';
 }
